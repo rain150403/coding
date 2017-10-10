@@ -15,7 +15,7 @@ public:
         if( n <= 0 )
             return 0;
         char strN[50];
-        sprintf( strN, "%d", n );
+        sprintf( strN, "%d", n );   //把整数n打印成一个字符串保存在strN 中。
         
         return NumberOf1( strN );
     }
