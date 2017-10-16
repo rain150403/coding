@@ -314,3 +314,5 @@ public:
         return isDup;
     }
 };
+
+//http://blog.csdn.net/gatieme/article/details/51540159
