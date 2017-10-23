@@ -86,4 +86,3 @@ int BinarySearch(vector<int> data, int low, int high, int k)
         return sumber;
     }
 };
-添加笔记
