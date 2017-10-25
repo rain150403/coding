@@ -1,3 +1,5 @@
+//longest common subsequence
+
 //只输出LCS的长度
 
 #include <iostream>  
