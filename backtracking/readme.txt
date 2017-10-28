@@ -13,25 +13,26 @@
 下面介绍回溯法的一般实现框架：
 
 bool finished = FALSE; /* 是否获得全部解? */
-backtrack(int a[], int k, data input)
+backtrack(int a[], int k, data input)  //a[]表示当前获得的部分解；k表示搜索深度；input表示用于传递的更多的参数；
 {
     int c[MAXCANDIDATES]; /*这次搜索的候选 */
     int ncandidates; /* 候选数目 */
     int i; /* counter */
-    if (is_a_solution(a,k,input))
-    process_solution(a,k,input);
-    else {
+    if (is_a_solution(a,k,input))   //判断当前的部分解向量a[1...k]是否是一个符合条件的解
+        process_solution(a,k,input);  //对于符合条件的解进行处理，通常是输出、计数等
+    else {
         k = k+1;
-        construct_candidates(a,k,input,c,&ncandidates);
-        for (i=0; i<ncandidates; i++) {
+        construct_candidates(a,k,input,c,&ncandidates);   //根据目前状态，构造这一步可能的选择，存入c[]数组，其长度存入ncandidates
+        for (i=0; i<ncandidates; i++) {
             a[k] = c[i];
             make_move(a,k,input);
             backtrack(a,k,input);
-            unmake_move(a,k,input);
-            if (finished) return; /* 如果符合终止条件就提前退出 */
+            unmake_move(a,k,input);  //前者将采取的选择更新到原始数据结构上，后者把这一行为撤销。
+            if (finished) return; /* 如果符合终止条件就提前退出 */
         }
     }
 }
+其实回溯法框架就是这么简单，通过这个框架，足以解决很多回溯法问题了。
 
 利用回溯法解决问题
 
@@ -43,30 +44,11 @@ backtrack(int a[], int k, data input)
 问题6：电话号码生成字符串
 问题7：一摞烙饼的排序
 问题8：8皇后问题
+
 总结与探讨
+    通过以上的实例，可以发现回溯法框架确实能够解决许多形态各异的问题，这也得归功于这个框架足够抽象而不限于具体问题的求解，其通用性毋庸置疑。
+　　然而如果一个问题看到之后就有了思路，并能直接写出类似于问题2的精简版的情况又如何呢？这种情况下当然就没必要再去套用回溯法框架了，因为你已经把这个框架的步骤内化到自己的思考中并能在这个问题上运用自如了，这一点是值得高兴的。这时回溯法框架对于你来说只是用于检查代码正确性的一种额外验证方式罢了，没必要退而求其次。
+　　当你思路比较混乱，不知如何下手时我才建议搬出回溯法框架进行分析和套用。不过从问题7烙饼排序中可以看到，有时思路的不清晰往往是对实际问题的抽象不够，而不是编写回溯法解决本身的问题。
+　　编写回溯法时应该注意尽可能剪枝，同时维护好构造候选时所用的数据结构。 
 
-
-
-
-复制代码
-　　对于其中的函数和变量，解释如下：
-
-　　a[]表示当前获得的部分解；
-
-　　k表示搜索深度；
-
-　　input表示用于传递的更多的参数；
-
-　　is_a_solution(a,k,input)判断当前的部分解向量a[1...k]是否是一个符合条件的解
-
-　　construct_candidates(a,k,input,c,ncandidates)根据目前状态，构造这一步可能的选择，存入c[]数组，其长度存入ncandidates
-
-　　process_solution(a,k,input)对于符合条件的解进行处理，通常是输出、计数等
-
-　　make_move(a,k,input)和unmake_move(a,k,input)前者将采取的选择更新到原始数据结构上，后者把这一行为撤销。
-
- 
-
-　　其实回溯法框架就是这么简单，通过这个框架，足以解决很多回溯法问题了。不信？下面展示一下：
-
-　　（由于后文所有代码均为在C中编写，因此bool类型用int类型代替，其中0为FALSE，非0为TRUE。）
+//转自：http://www.cnblogs.com/wuyuegb2312/p/3273337.html
