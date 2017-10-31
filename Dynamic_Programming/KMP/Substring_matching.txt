@@ -12,4 +12,4 @@ http://blog.csdn.net/wangbaochu/article/details/50687160
 这里有KMP代码，只是不能理解输出结果是什么意思
 
 http://blog.csdn.net/u011467044/article/details/55008649
-这里面讲的挺全的，代码也很完整，只是不知道正确与否
+这里面讲的挺全的，代码也很完整
