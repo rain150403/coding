@@ -1,5 +1,7 @@
 //转自：http://blog.csdn.net/zenail501129/article/details/23551909
 
+//这里虽然没有代码，但是思想原理讲的很清楚http://www.cnblogs.com/biyeymyhjob/archive/2012/07/30/2615542.html
+
 #include<stdio.h>  
 #include<stdlib.h>  
 #include<iostream>  
