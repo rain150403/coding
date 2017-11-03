@@ -1,5 +1,8 @@
 //转自：http://blog.csdn.net/yeruby/article/details/38615045
 
+//http://www.cnblogs.com/biyeymyhjob/archive/2012/07/30/2615542.html
+//这里面虽然没有代码，但是思想原理讲的很清楚
+
 #include<iostream>  
 //#include<fstream>  
 using  namespace std;  
