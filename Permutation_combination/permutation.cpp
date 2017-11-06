@@ -3,6 +3,8 @@
 1）字典序
 2）STL
 3）递归
+
+//对于有重复的数字，其实只要在交换元素之前判断是否相等即可
 */
 
 //转自：http://blog.csdn.net/laojiu_/article/details/51115352
@@ -108,16 +110,25 @@ prev_permutation对于当前的排列，如果在字典序中还存在前一个�
 #include<iostream>  
 #include<algorithm>  
   
-using namespace std;  
+using namespace std; 
 
 #define MAX 100
-int arry[3] = { 1,2,3 };//len==3;  
+int array[MAX] = {0}; 
   
 void Permutation()  
-{  
-    do  
-        printf("%d%d%d\n", arry[0], arry[1], arry[2]);  
-    while (next_permutation(arry, arry + 3));  
+{
+    int len;
+    scanf( "%d", &len );
+    for( int i = 0; i < len; i++ ){
+        scanf( "%d ", &array[i] );
+    }
+    do {
+        for( int i = 0; i < len; i++ ){
+            printf( "%d ", array[i] );
+        }
+        printf( "\n" );
+    } 
+    while (next_permutation(arry, arry + len ));  
       
 }  
   
@@ -125,6 +136,92 @@ int main()
 {  
   
     Permutation();  
+  
+    return 0;  
+}  
+//有重复数字
+//对于STL中的next_permutation呢？这就不需多虑了，STL里已经把相同元素的情况考虑进去了，代码不变。
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+递归法（重要的是思想，代码可看可不看）
+递归的话就很简单了，以{1,2,3}为例，它的排列是：
+以1开头，后面接着{2,3}的全排列，
+以2开头，后面接着{1,3}的全排列，
+以3开头，后面接着{1,2}的全排列。
+*/
+
+#include<iostream>  
+#include<algorithm>  
+  
+using namespace std;  
+  
+int arry[3] = { 1,2,3 };  
+  
+void Recursion(int s, int t)  
+{  
+    if (s == t)  
+        for_each(arry, arry + 3, [](int i) {printf("%d", i); }), printf("\n");  
+    else  
+    {  
+        for (int i = s; i <= t; i++)  
+        {  
+            swap(arry[i], arry[s]);  
+            Recursion(s + 1, t);  
+            swap(arry[i], arry[s]);  
+        }  
+    }  
+}  
+  
+int main()  
+{  
+  
+    Recursion(0, 2);  
+  
+    return 0;  
+}  
+
+//有重复数字的情况，在交换数字之前判断一下是否相等
+
+#include<iostream>  
+#include<algorithm>  
+  
+using namespace std;  
+  
+int arry[3] = { 1,2,2 };  
+  
+bool IsEqual(int s, int t)  
+{  
+    for (int i = s; i < t; i++)  
+        if (arry[i] == arry[t])  
+            return true;  
+  
+    return false;  
+}  
+  
+void Recursion(int s, int t)  
+{  
+    if (s == t)  
+        for_each(arry, arry + 3, [](int i) {printf("%d", i); }), printf("\n");  
+    else  
+    {  
+        for (int i = s; i <= t; i++)  
+        {  
+            if (!IsEqual(s, i))//不相等才能交换  
+            {  
+                swap(arry[i], arry[s]);  
+                Recursion(s + 1, t);  
+                swap(arry[i], arry[s]);  
+            }  
+        }  
+    }  
+}  
+  
+int main()  
+{  
+  
+    Recursion(0, 2);  
   
     return 0;  
 }  
