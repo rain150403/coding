@@ -1,3 +1,10 @@
+/*
+改动的地方：
+把数组一的数据存放到set里面：set<int> record( nums1.begin(), nums1.end() );
+把set2的数据存放到vector中：return vector<int>( resultSet.begin(), resultSet.end() );
+只是看起来更清晰了，实现的功能不变。
+*/
+
 #include <iostream>
 #include <vector>
 #include <set>
