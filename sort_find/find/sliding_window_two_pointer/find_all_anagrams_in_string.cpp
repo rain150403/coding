@@ -1,3 +1,5 @@
+////所谓的使用哈希表就是使用map，set这些，而其实也可以用int数组实现？？？  通过这几个代码可以熟悉熟悉哈希的写法。
+
 /*
 Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
 
