@@ -1,3 +1,6 @@
+//所谓的使用哈希表就是使用map，set这些，而其实也可以用int数组实现？？？
+
+
 /*
 Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
 
