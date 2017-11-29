@@ -88,6 +88,7 @@ int length_LCS(string s1,string s2,int **c,int **b,int m,int n)  //输出LCS的�
     return c[m][n];  
 }  
   
+/*二维数组b[1..m,1..n]，b[i,j]标记c[i,j]是由哪一个子问题的解求得的，以决定搜索的方向。取值范围为LeftTop、Top、Left三种情况。*/
 void Print_LCS(int **b,string x,int i,int j) //输出LCS序列  
 {  
     if(i==0||j==0)  
