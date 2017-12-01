@@ -29,6 +29,35 @@
 递归过程，我不是很理解。容易晕。当然，在construct candidates的时候，很巧妙。
 */
 
+//按排序生成 (按排序生成则比较复杂，它按特定顺序生成,除非有这种要求，否则不要使用这个方式)*/
+
+/*虽然复杂，但这是最容易理解的，并且能输出正确结果的一个代码*/
+#include <stdio.h>
+
+int main(int argc,char **argv){
+    int n,i,runner,start,end;
+    printf("请输入正整数的n的值：");
+    scanf("%d",&n);
+    printf("{}\n"); //输出空集
+    for(end = 1; end <= n; end++){
+        printf("{%d}\n",end);
+        for(start = end; start > 0; start--){
+            for(runner = 1; runner < start; runner++){
+                printf("{");
+                printf("%d",runner);
+                for(i = start; i < end; i++){
+                    printf("%d",i);
+                }
+                printf("%d}\n",end);
+            }
+        }
+    }
+}
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 //二进制位变换
 
 #include <stdio.h>
@@ -180,31 +209,6 @@ int main()
 
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-//按排序生成 (按排序生成则比较复杂，它按特定顺序生成,除非有这种要求，否则不要使用这个方式)*/
-#include <stdio.h>
-
-int main(int argc,char **argv){
-    int n,i,runner,start,end;
-    printf("请输入正整数的n的值：");
-    scanf("%d",&n);
-    printf("{}\n"); //输出空集
-    for(end = 1; end <= n; end++){
-        printf("{%d}\n",end);
-        for(start = end; start > 0; start--){
-            for(runner = 1; runner < start; runner++){
-                printf("{");
-                printf("%d",runner);
-                for(i = start; i < end; i++){
-                    printf("%d",i);
-                }
-                printf("%d}\n",end);
-            }
-        }
-    }
-}
-
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 /*
  位运算求子集树
@@ -220,6 +224,8 @@ using namespace std;
 const int n = 4;
 int x[n];
 //回溯法
+
+/*回溯法与递归，我还是搞不懂，这到底是怎么回事*/
 void backtrack(int t)
 {
     if(t >= n)
@@ -238,6 +244,7 @@ void backtrack(int t)
     }
 }
 //位运算
+/*能输出全部的子集吗？*/
 void bitOperate()
 {
     for(int i = 0; i < (1 << n); i++)
