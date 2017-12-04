@@ -1,8 +1,10 @@
 //这一节的内容各种问题，哎
-http://www.cnblogs.com/grandyang/p/4820842.html
-http://www.cnblogs.com/felixfang/p/3775712.html
+//http://www.cnblogs.com/grandyang/p/4820842.html
+//http://www.cnblogs.com/felixfang/p/3775712.html
 
-//求一个集合的所有子集问题
+
+
+//求一个集合的所有子集问题（1.元素各不相同， 2.元素可能相同）
 
 /*生成子集的三种方式：
 
