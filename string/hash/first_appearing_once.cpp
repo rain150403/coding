@@ -6,7 +6,40 @@
 输出描述:
 
 如果当前字符流没有存在出现一次的字符，返回#字符。
+
+解法：
+/*
+读到题目，会有一个初步的思路，再近一步完善。
+想到我们需要一个数据容器，可以统计每个字符在该字符串中出现的次数。
+哈希表，键值key是字符，而值value是该字符出现的次数。
+我们创建一个长度为256的数组，每个字母根据其ASCII码值作为数组的下标对应数组的一个数字，而数组中存储的是每个字符出现的次数。
+第一次扫描，在哈希表中更新一个字符出现的次数
+第二次扫描，读出一个字符出现的次数。
 */
+*/
+char FirstNotRepeatingChar(char* pString){
+	if(pString == NULL)
+		return '\0';
+	const int tableSize = 256;
+	unsigned int hashTable[tableSize];
+	for(unsigned int i = 0; i < tableSize; ++i)
+		hashTable[i] = 0;
+
+	char* pHashKey = pString;
+	while(*(pHashKey) != '\0')
+		hashTable[*(pHashKey++)]++;
+
+	pHashKey = pString;
+	while(*pHashKey != '\0'){
+		if(hashTable[*pHashKey] == 1)
+			return *pHashKey;
+
+		pHashKey++;
+	}
+
+	return '\0';
+}
+####################################################################
 
 class Solution{
 public:
