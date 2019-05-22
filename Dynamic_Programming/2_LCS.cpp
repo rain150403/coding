@@ -3,13 +3,13 @@
 //只输出LCS的长度
 
 #include <iostream>  
-#include <cstring>  
+#include <cstring>     //  <string> 不知道哪个头文件比较好用
 using namespace std;  
   
 int length_LCS(string s1,string s2) //求LCS的长度  
 {  
     int m=s1.length(),n=s2.length();  
-    int c[m+1][n+1];  
+    int c[m+1][n+1];     ///数组表达式必须含有常量值，所以建议改成 int c[50][50];其中数组可以设的比较大，不会影响检测结果
   
     /*处理特殊的0行和0列*/  
     for(int i=0;i<=m;i++)  
